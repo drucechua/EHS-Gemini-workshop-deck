@@ -151,7 +151,7 @@ doodleSize: 110
 
 <div>
 <p class="muted" style="margin-bottom: 14px">Type this into your browser:</p>
-<div class="inline-block rounded-xl px-8 py-4 text-4xl font-bold" style="background: var(--ehs-night-2); border: 1px solid #3a3e50; font-family: var(--ehs-mono); color: var(--ehs-pastel)">tinyurl.com/EHS-AI</div>
+<div class="inline-block rounded-xl px-8 py-4 text-4xl font-bold" style="background: var(--ehs-night-2); border: 1px solid #3a3e50; font-family: var(--ehs-mono); color: var(--ehs-pastel)">tinyurl.com/EHS-AI-training</div>
 <p class="muted mt-6" style="max-width: 520px">Keep it open. You'll use it for the hands-on part.</p>
 </div>
 
