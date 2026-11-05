@@ -764,3 +764,5 @@
   .slidev-layout .polish-card,
   .slidev-layout .polish-lead { transition: none !important; transform: none !important; }
 }
+
+#slidev-goto-dialog { display: none !important; }
