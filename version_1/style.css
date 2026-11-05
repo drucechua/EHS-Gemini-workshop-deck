@@ -1,0 +1,473 @@
+/* EHS Team Training deck styles.
+   Based on the original Google Slides deck: warm paper backgrounds,
+   Lora headings, Poppins body, mustard and clay accents, plus dark
+   night slides for section breaks and key statements. */
+
+:root {
+  /* Surfaces */
+  --ehs-cream: #f4f1ea;
+  --ehs-sand: #ece5d8;
+  --ehs-paper: #faf7f0;
+  --ehs-line: #ddd5c4;
+  --ehs-night: #1d1f2c;
+  --ehs-night-2: #2a2d3c;
+  --ehs-sun: #ffde59;
+
+  /* Text */
+  --ehs-ink: #23201b;
+  --ehs-ink-soft: #5c564a;
+  --ehs-on-night: #f4f1ea;
+  --ehs-on-night-soft: #b8b2a5;
+
+  /* Accents */
+  --ehs-mustard: #c6982f;
+  --ehs-mustard-ink: #8c6a1c;
+  --ehs-mustard-glow: #e8c15a;
+  --ehs-clay: #be7150;
+  --ehs-clay-ink: #9a4e30;
+  --ehs-olive: #7e8366;
+
+  /* Soft tints for callouts and cards */
+  --ehs-peach: #f4d5c9;
+  --ehs-sky: #d3e1e8;
+  --ehs-sage: #e3e7d8;
+  --ehs-butter: #f6edcf;
+
+  /* Workflow step colors, from the original workflow slide */
+  --ehs-step-1: #2f8fd8;
+  --ehs-step-2: #5ca340;
+  --ehs-step-3: #e8920f;
+  --ehs-step-4: #8a5fd4;
+  --ehs-step-5: #e04848;
+
+  --ehs-serif: 'Lora', Georgia, serif;
+  --ehs-sans: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+  --ehs-mono: 'Space Mono', 'DejaVu Sans Mono', monospace;
+}
+
+/* ---------- Base frame ---------- */
+
+.slidev-layout.ehs {
+  padding: 0;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: var(--ehs-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ehs-ink);
+  background: var(--ehs-cream);
+}
+
+.slidev-layout.ehs.tone-sand { background: var(--ehs-sand); }
+.slidev-layout.ehs.tone-sun { background: var(--ehs-sun); }
+.slidev-layout.ehs.tone-dark {
+  background: var(--ehs-night);
+  color: var(--ehs-on-night);
+}
+
+.ehs-body {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  padding: 40px 56px 52px;
+  box-sizing: border-box;
+}
+
+/* ---------- Typography ---------- */
+
+.slidev-layout.ehs h1 {
+  font-family: var(--ehs-serif);
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0 0 18px;
+  color: inherit;
+}
+
+.slidev-layout.ehs h2 {
+  font-family: var(--ehs-serif);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 0 0 10px;
+}
+
+.slidev-layout.ehs h3 {
+  font-family: var(--ehs-sans);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.3;
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.slidev-layout.ehs p { margin: 0 0 10px; }
+.slidev-layout.ehs strong { font-weight: 600; }
+.slidev-layout.ehs .muted { color: var(--ehs-ink-soft); }
+.slidev-layout.ehs.tone-dark .muted { color: var(--ehs-on-night-soft); }
+.slidev-layout.ehs .small { font-size: 13px; }
+
+.slidev-layout.ehs a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--ehs-mustard);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/* Numbered lists: mustard circles, echoing the original 01 / 02 markers */
+.slidev-layout.ehs ol {
+  list-style: none;
+  counter-reset: ehs-ol;
+  padding: 0;
+  margin: 0 0 12px;
+}
+.slidev-layout.ehs ol > li {
+  counter-increment: ehs-ol;
+  position: relative;
+  padding-left: 38px;
+  margin: 0 0 12px;
+  min-height: 26px;
+}
+.slidev-layout.ehs ol > li::before {
+  content: counter(ehs-ol);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--ehs-mustard);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  display: grid;
+  place-items: center;
+}
+
+.slidev-layout.ehs ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+}
+.slidev-layout.ehs ul > li {
+  position: relative;
+  padding-left: 20px;
+  margin: 0 0 8px;
+}
+.slidev-layout.ehs ul > li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ehs-clay);
+}
+
+/* On the yellow "sun" slides, mustard markers lose contrast, so they go dark */
+.slidev-layout.ehs.tone-sun ol > li::before { background: var(--ehs-night); }
+.slidev-layout.ehs.tone-sun ul > li::before { background: var(--ehs-night); }
+
+/* ---------- Cards, panels, screenshots ---------- */
+
+.card {
+  background: var(--ehs-paper);
+  border: 1px solid var(--ehs-line);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+.slidev-layout .card p:last-child { margin-bottom: 0; }
+.card.tint-sky { background: var(--ehs-sky); border-color: transparent; }
+.card.tint-peach { background: var(--ehs-peach); border-color: transparent; }
+.card.tint-sage { background: var(--ehs-sage); border-color: transparent; }
+.card.tint-butter { background: var(--ehs-butter); border-color: transparent; }
+.tone-dark .card {
+  background: var(--ehs-night-2);
+  border-color: #3a3e50;
+  color: var(--ehs-on-night);
+}
+
+/* Device-style panel with a peach header, from the original Set-up slide */
+.panel {
+  border: 5px solid var(--ehs-ink);
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--ehs-paper);
+  box-shadow: 0 10px 24px rgba(35, 32, 27, 0.18);
+}
+.panel-head {
+  background: var(--ehs-peach);
+  font-weight: 600;
+  font-size: 22px;
+  padding: 12px 22px;
+}
+.panel-body { padding: 18px 22px 8px; }
+
+.shot {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--ehs-line);
+  box-shadow: 0 6px 16px rgba(35, 32, 27, 0.12);
+}
+.tone-dark .shot { border-color: #3a3e50; }
+
+.video-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 10px;
+  background: var(--ehs-night);
+  box-shadow: 0 6px 16px rgba(35, 32, 27, 0.15);
+}
+
+.flow-arrow {
+  font-size: 22px;
+  color: var(--ehs-ink-soft);
+  padding-top: 18px;
+}
+
+/* ---------- Icon dots ---------- */
+
+.dot {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  background: var(--ehs-mustard);
+}
+.dot img { width: 16px; height: 16px; object-fit: contain; }
+.dot-mustard { background: var(--ehs-mustard); }
+.dot-clay { background: var(--ehs-clay); }
+.dot-olive { background: var(--ehs-olive); }
+.dot-ink { background: var(--ehs-ink); }
+.dot-step-1 { background: var(--ehs-step-1); }
+.dot-step-2 { background: var(--ehs-step-2); }
+.dot-step-3 { background: var(--ehs-step-3); }
+.dot-step-4 { background: var(--ehs-step-4); }
+.dot-step-5 { background: var(--ehs-step-5); }
+.dot.lg { width: 58px; height: 58px; }
+.dot.lg img { width: 28px; height: 28px; }
+
+/* ---------- Callouts ---------- */
+
+.callout {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  background: var(--ehs-paper);
+  border: 1px solid var(--ehs-line);
+}
+.slidev-layout .callout p { margin: 0; }
+.callout-label { display: block; font-weight: 600; margin-bottom: 2px; }
+.callout-sky { background: var(--ehs-sky); border-color: transparent; }
+.callout-peach { background: var(--ehs-peach); border-color: transparent; }
+.callout-sage { background: var(--ehs-sage); border-color: transparent; }
+.callout-butter { background: var(--ehs-butter); border-color: transparent; }
+.callout-sky .callout-label { color: #2f5566; }
+.callout-peach .callout-label { color: var(--ehs-clay-ink); }
+.callout-sage .callout-label { color: #4d5a33; }
+.callout-butter .callout-label { color: var(--ehs-mustard-ink); }
+.callout-paper .callout-label { color: var(--ehs-mustard-ink); }
+.callout-dark {
+  background: var(--ehs-night);
+  border-color: transparent;
+  color: var(--ehs-on-night);
+}
+.callout-dark .callout-label { color: #f0a383; }
+
+/* ---------- Doodles ---------- */
+
+.doodle {
+  position: absolute;
+  z-index: 2;
+  width: var(--doodle-size, 120px);
+  height: var(--doodle-size, 120px);
+  display: block;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+.doodle img { display: block; width: 100%; height: 100%; max-width: none; object-fit: contain; }
+
+/* On dark slides, doodles sit on a cream sticker so the blue linework stays visible */
+.doodle-sticker {
+  background: var(--ehs-cream);
+  border-radius: 50%;
+  padding: calc(var(--doodle-size, 120px) * 0.14);
+  box-sizing: border-box;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.doodle-pos-br { right: 40px; bottom: 38px; }
+.doodle-pos-tr { right: 44px; top: 30px; }
+.doodle-pos-bl { left: 44px; bottom: 44px; }
+
+/* ---------- Footer ---------- */
+
+.ehs-footer {
+  position: absolute;
+  z-index: 3;
+  left: 56px;
+  right: 56px;
+  bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--ehs-ink-soft);
+}
+.ehs-footer img { height: 16px; opacity: 0.75; }
+.ehs-footer-meta { display: inline-flex; align-items: center; gap: 10px; }
+.ehs-footer-sep { width: 1px; height: 11px; background: currentColor; opacity: 0.4; }
+.ehs-footer-page { font-weight: 600; min-width: 1.2em; text-align: right; }
+.tone-dark .ehs-footer { color: var(--ehs-on-night-soft); }
+.tone-dark .ehs-footer img { opacity: 0.6; }
+
+/* ---------- Step tracker ---------- */
+
+.step-tracker {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  margin-bottom: 14px;
+}
+.step-tracker .step {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.38;
+}
+.step-tracker .step.is-active { opacity: 1; font-weight: 600; }
+.step-tracker .step-num {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  display: grid;
+  place-items: center;
+}
+.step-tracker .sep {
+  width: 16px;
+  height: 2px;
+  background: var(--ehs-line);
+}
+
+/* ---------- Cover ---------- */
+
+.slidev-layout.ehs-cover {
+  display: grid;
+  grid-template-columns: 58% 42%;
+}
+.slidev-layout.ehs-cover .cover-text {
+  padding: 64px 48px 48px 56px;
+  display: flex;
+  flex-direction: column;
+}
+.slidev-layout.ehs-cover .cover-eyebrow {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ehs-mustard-ink);
+  margin-bottom: 14px;
+}
+.slidev-layout.ehs-cover h1 {
+  font-family: var(--ehs-sans);
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+}
+.slidev-layout.ehs-cover .cover-main p {
+  font-size: 17px;
+  color: var(--ehs-ink-soft);
+  max-width: 26em;
+}
+.slidev-layout.ehs-cover .cover-meta {
+  margin-top: auto;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+.slidev-layout.ehs-cover .cover-image {
+  background-size: cover;
+  background-position: center;
+}
+.slidev-layout.ehs-cover .doodle { left: calc(58% - 64px); bottom: 36px; }
+
+/* ---------- Section divider and end slide ---------- */
+
+.slidev-layout.ehs-divider {
+  display: grid;
+  grid-template-columns: 1fr 210px;
+}
+.slidev-layout.ehs-divider .divider-main {
+  padding: 0 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.slidev-layout.ehs-divider .divider-number {
+  font-family: var(--ehs-mono);
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 1;
+  color: var(--ehs-mustard-glow);
+  margin-bottom: 18px;
+}
+.slidev-layout.ehs-divider h1 {
+  font-size: 38px;
+  max-width: 15em;
+  color: var(--ehs-on-night);
+  margin-bottom: 10px;
+}
+.slidev-layout.ehs-divider .divider-subtitle {
+  font-size: 17px;
+  color: var(--ehs-on-night-soft);
+}
+.slidev-layout.ehs-divider .divider-strip { background: var(--ehs-sky); }
+.slidev-layout.ehs-divider .doodle {
+  right: 210px;
+  top: 50%;
+  transform: translate(50%, -50%);
+}
+.slidev-layout.ehs-divider .doodle.doodle-sticker {
+  background: var(--ehs-cream);
+}
+
+.slidev-layout.ehs-end h1 { font-size: 56px; }
+.slidev-layout.ehs-end .divider-meta {
+  margin-top: 26px;
+  font-size: 15px;
+  color: var(--ehs-on-night-soft);
+  line-height: 1.6;
+}
+
+/* ---------- Statement ---------- */
+
+.slidev-layout.ehs-statement .ehs-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.slidev-layout.ehs-statement h1 { font-size: 40px; }
+
+/* Keep the footer on the dark side of divider slides, clear of the pale strip */
+.slidev-layout.ehs-divider .ehs-footer { right: 266px; }
