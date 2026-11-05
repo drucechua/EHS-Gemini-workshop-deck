@@ -40,7 +40,7 @@ Introduce yourselves. One sentence on why we're here: EHS already has good train
 
 ---
 
-# What we're doing
+# Today's Session
 
 <div class="grid grid-cols-3 gap-5">
 <div class="agenda-item">
